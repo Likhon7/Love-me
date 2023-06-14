@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-violet-700 w-screen h-screen flex justify-center items-center">
+  <div id="main_sec" class="md:w-[50vw] md:h-[50vh] w-[80vw] h-[85vh] bg-white rounded-lg relative shadew-lg">
+    <div class="cont pt-20 md:pt-0">
+      <span class="">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white"
+          class="md:w-16 md:h-16 w-10 h-10 mx-auto my-2 bg-violet-700 rounded-full">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+        </svg>
+      </span>
+      <h2 id="text" class="text-violet-700 md:text-5xl text-center font-bold">Do you Love me?</h2>
+      <div class="btn my-8 gap-8">
+        <button id="yes_btn" class="bg-violet-700 ml-[30%] py-2 px-10 text-white font-bold md:text-2xl">Yes</button>
+      </div>
+      <button id="no_btn"
+        class="border-2 right-[30%] md:top-[160px] top-[230px] mt-4 md:mt-0 border-violet-700 font-bold md:text-2xl absolute py-2 px-10 w-[105px] z-50 bg-white">No</button>
+    </div>
+  </div>
+
+  <script>
+    let main_sec = document.getElementById("main_sec");
+    let textChange = document.getElementById("text");
+    let yes_btn = document.getElementById("yes_btn");
+    let no_btn = document.getElementById("no_btn");
+
+    let bound = main_sec.getBoundingClientRect();
+    let main_w = bound.width;
+    let main_h = bound.height;
+
+    let noBtn_bound = no_btn.getBoundingClientRect();
+    let noBtn_w = noBtn_bound.width;
+    let noBtn_h = noBtn_bound.height;
+
+    console.log(main_w)
+    console.log(noBtn_w)
+
+    function changeText() {
+      textChange.innerText = 'Yes I love you "Likhon!"';
+    }
+    yes_btn.addEventListener('click', () => {
+      changeText();
+      yes_btn.style.display = "none";
+      no_btn.style.display = "none";
+    })
+
+
+    no_btn.addEventListener('click', () => {
+      textChange.innerText = 'I hate you'
+      yes_btn.style.display = "none";
+      no_btn.style.display = "none";
+    })
+
+
+    no_btn.addEventListener("mouseover", () => {
+      let left = Math.floor(Math.random() * (main_w - noBtn_w)) + 1;
+      let top = Math.floor(Math.random() * (main_h - noBtn_h)) + 1;
+      no_btn.style.left = left + "px";
+      no_btn.style.top = top + "px";
+      // no_btn.style.top = Math.floor(Math.random() * (main_w - noBtn_w)) + 1;
+    })
+
+  </script>
+</body>
+
+</html>
